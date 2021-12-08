@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 
-
-class Welcome extends Component {
+class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -10,10 +9,10 @@ class Welcome extends Component {
     render() { 
         return ( 
             <>
-            {/* This will be Welcome Window with Login page */}
+            {/*  Will have a hozizontal tablet display and a vertical desktop display */}
             </>
          );
     }
 }
  
-export default Welcome;
+export default Menu;
