@@ -13,7 +13,10 @@ function BillsContainer (props) {
     return ( 
         <div>
             <h1>This is the Bills Container</h1>
-            {ListBills}
+            <div className="space-y-2">
+                {ListBills}
+            </div>
+            
         </div>
      );
 }
