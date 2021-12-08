@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import BillsContainer from "./bill/BillsContainer"
 
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000"
@@ -60,13 +61,16 @@ updateWindowDisplay = () => {
 
   render() { 
     return (  
-      <>
+      <div className='font-sans'>
       {this.state.isDesktop ? (
+        <>
         <h1>Welcome to the App!!! Desktop Version </h1>
+        <BillsContainer  billsData={this.state.billsData}/>
+        </>
       ) : (
         <h1>Welcome to the App!!! Tablet/Mobile Version</h1>
       )}
-      </>
+      </div>
     );
   }
 }
