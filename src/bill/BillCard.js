@@ -18,9 +18,10 @@ function BillCard (props) {
             <button class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                 Edit
             </button>
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => props.deleteBill(bill.id)}>
                 Delete
             </button>
+
             </div>
         </div>
      );
