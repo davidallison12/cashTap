@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class BillForm extends Component {
+class EditBillForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bill_type: "",
-      company_name: "",
-      bill_due_date: "",
-      min_payment: "",
+      bill_type: this.props.billData.bill_type,
+      company_name: this.props.billData.company_name,
+      bill_due_date: this.props.billData.bill_due_date,
+      min_payment: this.props.billData.min_payment,
     };
   }
 
@@ -52,6 +52,8 @@ class BillForm extends Component {
 
   render() {
     return (
+        <>
+        <h1>EDIT A BILL</h1>
       <form onSubmit={this.handleSubmit}>
         <div class="mb-6">
           <label
@@ -65,7 +67,6 @@ class BillForm extends Component {
             id="bill_type"
             name="bill_type"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Credit Card"
             onChange={(e) => this.handleChange(e)}
             value={this.state.bill_type}
             required
@@ -132,8 +133,9 @@ class BillForm extends Component {
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         />
       </form>
+      </>
     );
   }
 }
 
-export default BillForm;
+export default EditBillForm;
