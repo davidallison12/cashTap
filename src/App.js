@@ -65,6 +65,13 @@ class App extends Component {
     }
   }
 
+  //UPDATING BILL
+  handleUpdatedBills = (updatedBills) => {
+    console.log(updatedBills)
+    this.setState({
+      billsData: updatedBills
+    })
+  }
 
 
 
@@ -97,6 +104,7 @@ class App extends Component {
               addBill={this.addBill}
               getBills={this.getBills}
               deleteBill={this.deleteBill}
+              handleUpdatedBills={this.handleUpdatedBills}
             />
           </>
         ) : (

@@ -19,11 +19,11 @@ class EditBillForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const url = this.props.baseUrl + "/api/bills/";
+    const url = this.props.baseUrl + "/api/bills/" + this.props.billData.id + "/"
 
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
           bill_type: this.state.bill_type.toLowerCase(),
           company_name: this.state.company_name,
@@ -34,16 +34,20 @@ class EditBillForm extends Component {
           "Content-Type": "application/json",
         },
       });
-      if (response.status === 201) {
-        const newBill = await response.json();
-        console.log(newBill);
-        this.props.addBill(newBill);
-        this.setState({
-          bill_type: "",
-          company_name: "",
-          bill_due_date: "",
-          min_payment: "",
-        });
+      if (response.status === 200) {
+        const updatedBill = await response.json();
+        console.log(updatedBill);
+        const findIndex = this.props.allBillsData.findIndex((bill) => bill.id === updatedBill.id)
+        const copyBills = [...this.props.allBillsData]
+        copyBills[findIndex] = updatedBill
+        // Function in order ot pass copyBills to state.
+        this.props.setEditForm(false)
+        this.props.handleUpdatedBills(copyBills)
+      } 
+      else{
+        response.json().then((data) => {
+            console.log(data)
+        })
       }
     } catch (err) {
       console.log("Error =>", err);

@@ -19,7 +19,7 @@ function BillsContainer(props) {
       
       {editForm &&
 
-      <EditBillForm  setEditForm={setEditForm} billData={billForEdit}/>
+      <EditBillForm baseUrl={props.baseUrl} setEditForm={setEditForm} billData={billForEdit} allBillsData={props.billsData} handleUpdatedBills={props.handleUpdatedBills}/>
       }
     </div>
   );
