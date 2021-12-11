@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import BillsContainer from "./bill/BillsContainer";
+import Home from "./welcome/Home";
+
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
 
@@ -94,8 +96,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="font-sans">
-        {this.state.isDesktop ? (
+      <div className="">
+        <Home />
+        
+        {/* {this.state.isDesktop ? (
           <>
             <h1>Welcome to the App!!! Desktop Version </h1>
             <BillsContainer
@@ -109,7 +113,7 @@ class App extends Component {
           </>
         ) : (
           <h1>Welcome to the App!!! Tablet/Mobile Version</h1>
-        )}
+        )} */}
       </div>
     );
   }

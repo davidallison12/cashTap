@@ -13,35 +13,66 @@ class Welcome extends Component {
         return ( 
             <>
             {/* This will be Welcome Window with Login page */}
-            <h1>Home Page</h1>
+            
+            <div className="columns is-mobile">
+              <div className="column container">
+            <h1 >Home Page</h1>
             <h1>Welcome to cashTap</h1>
-            <div>
-            <form>
-  <div class="mb-6">
-    <label for="email" class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Your email</label>
-    <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required />
-  </div>
-  <div class="mb-6">
-    <label for="password" class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Your password</label>
-    <input type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-  </div>
-  <div class="mb-6">
-    <label for="repeat-password" class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Repeat password</label>
-    <input type="password" id="repeat-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
-  </div>
-  <div class="flex items-start mb-6">
-    <div class="flex items-center h-5">
-      <input id="terms" aria-describedby="terms" type="checkbox" class="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
-    </div>
-    <div class="text-sm ml-3">
-      <label for="terms" class="font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
-    </div>
-  </div>
-  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
-</form>
             </div>
+            </div>
+          
 
-            </>
+            <div className="columns is-mobile">
+              <form className="container column">
+              <div className="field">
+  <label className="label">Name</label>
+  <div className="control">
+    <input className="input" type="text" placeholder="Text input" />
+  </div>
+</div>
+
+<div className="field">
+  <label className="label">Username</label>
+  <div className="control has-icons-left has-icons-right">
+    <input className="input is-success" type="text" placeholder="Text input" value="bulma" />
+    <span className="icon is-small is-left">
+      <i className="fas fa-user"></i>
+    </span>
+    <span className="icon is-small is-right">
+      <i className="fas fa-check"></i>
+    </span>
+  </div>
+  <p className="help is-success">This username is available</p>
+</div>
+
+<div className="field">
+  <label className="label">Email</label>
+  <div className="control has-icons-left has-icons-right">
+    <input className="input is-danger" type="email" placeholder="Email input" value="hello@" />
+    <span className="icon is-small is-left">
+      <i className="fas fa-envelope"></i>
+    </span>
+    <span className="icon is-small is-right">
+      <i className="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+  <p className="help is-danger">This email is invalid</p>
+</div>
+
+
+
+<div className="field is-grouped">
+  <div className="control">
+    <button className="button is-link">Submit</button>
+  </div>
+  <div className="control">
+    <button className="button is-link is-light">Cancel</button>
+  </div>
+</div>
+              </form>
+            </div>
+</>
+
          );
     }
 }
