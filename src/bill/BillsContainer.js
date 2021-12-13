@@ -15,7 +15,7 @@ function BillsContainer(props) {
     <div>
       <h1>This is the Bills Container</h1>
       <div className="space-y-2">{ListBills}</div>
-      <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills}/>
+      <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills} user={props.user}/>
       
       {editForm &&
 

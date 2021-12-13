@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class AddBillForm extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class AddBillForm extends Component {
           company_name: this.state.company_name,
           bill_due_date: this.state.bill_due_date,
           min_payment: this.state.min_payment,
+          user: this.props.user.user_id
         }),
         headers: {
           "Content-Type": "application/json",

@@ -21,6 +21,8 @@ export const AuthProvider = ({children}) => {
 
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
 
+    let [loading, setLoading] = useState(true)
+
     
     let loginUser = async (e) => {
         e.preventDefault()
@@ -62,17 +64,59 @@ export const AuthProvider = ({children}) => {
         console.log(user)
         console.log(authTokens)
     }
+
+    let updateToken = async () => {
+        console.log('Update Token called')
+        let response = await fetch('http://localhost:8000/api/token/refresh/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'refresh': authTokens?.refresh // If nothing there we do not want to refresh
+            })
+        })
+        let data = await response.json()
+        if (response.status === 200) {
+            setAuthTokens(data)
+            setUser(jwt_decode((data.access)))
+            localStorage.setItem('authTokens', JSON.stringify(data))
+        } else {
+            logoutUser()
+        }
+        if (loading) {
+            setLoading(false)
+        }
+
+    }
     
+
+    useEffect (() => {
+
+        if (loading) {
+            updateToken()
+        }
+        let fourMinutesFifty = 300000
+        let interval = setInterval(() => {
+            if(authTokens) {
+                updateToken()
+            }
+        }, fourMinutesFifty) // Will fire every 2 seconds to fetch refresh token
+        return () => clearInterval(interval)
+    }, [authTokens, loading])
+
+
     let contextData = {
         user : user,
         loginUser: loginUser,
-        logoutUser: logoutUser
+        logoutUser: logoutUser,
+        authTokens: authTokens,
     }
 
 // We are providing the code
     return(
         <AuthContext.Provider value={contextData}> 
-            {children}
+            {loading ? null : children}
         </ AuthContext.Provider>
     )
 }

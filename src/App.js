@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import AuthContext from "./context/AuthContext";
+import AuthContext from "./context/AuthContext"; //Importing context from AuthContext for authorization (Auth Token)
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import BillsContainer from "./bill/BillsContainer";
@@ -8,14 +8,20 @@ import Home from "./welcome/Home";
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
 
 function App() {
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, authTokens } = useContext(AuthContext);
   const [billsData, setBillsData] = useState([]);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isUser, setIsUser] = useState(user)
   //  ========= BILLS CRUD FUNCTIONS =========
   // READ ==> GET
   const getBills = () => {
-    fetch(baseUrl + "/api/bills/")
+    fetch(baseUrl + "/api/bills/", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + String(authTokens.access)
+      }
+    })
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -66,10 +72,22 @@ function App() {
     setIsDesktop(window.innerWidth > 1000);
   };
 
+
   useEffect(() => {
-    getBills();
+    if(user) {
+      getBills();
+    }
     // updateWindowDisplay();
+  }, [user]);
+
+
+  useEffect(() => {
+    if(user) {
+      getBills();
+    }
+
   }, []);
+
 
   // useEffect(() => {
   //   window.addEventListener("resize", updateWindowDisplay);
@@ -91,6 +109,7 @@ function App() {
               getBills={getBills}
               deleteBill={deleteBill}
               handleUpdatedBills={handleUpdatedBills}
+              user={user}
             />
           </>
         ) : (
