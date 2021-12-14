@@ -99,6 +99,7 @@ function App() {
      
       <>
         {user  ? (
+
           <>
             <h1>Welcome to the App!!! Desktop Version </h1>
             <button onClick={logoutUser}>Logout</button>

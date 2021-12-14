@@ -26,6 +26,9 @@ export const AuthProvider = ({children}) => {
     
     let loginUser = async (e) => {
         e.preventDefault()
+        if(e.target.id.value === undefined) {
+            return
+        }
         console.log("Login Submitted")
         try{
         let response = await fetch('http://localhost:8000/api/token/', {
@@ -89,6 +92,35 @@ export const AuthProvider = ({children}) => {
         }
 
     }
+
+    let registerUser = async (username, password, confirmPassword, first_name, last_name, email) => {
+        
+        console.log("Create User Route Hit!");
+    if (password === confirmPassword) {
+      try {
+        let response = await fetch("http://localhost:8000/api/users/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username.toLowerCase(),
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            password: password,
+          }),
+        });
+        if (response.status === 201) {
+          const newUser = await response.json();
+          console.log(newUser);
+          // loginUser()
+        }
+      } catch (err){
+          console.log('Error =>', err )
+      }
+    }
+    }
     
 
     useEffect (() => {
@@ -111,6 +143,7 @@ export const AuthProvider = ({children}) => {
         loginUser: loginUser,
         logoutUser: logoutUser,
         authTokens: authTokens,
+        registerUser: registerUser
     }
 
 // We are providing the code
