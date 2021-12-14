@@ -26,9 +26,6 @@ export const AuthProvider = ({children}) => {
     
     let loginUser = async (e) => {
         e.preventDefault()
-        if(e.target.id.value === undefined) {
-            return
-        }
         console.log("Login Submitted")
         try{
         let response = await fetch('http://localhost:8000/api/token/', {

@@ -10,7 +10,7 @@ const Login = (props) => {
   const [last_name, set_last_name] = useState("");
   const [email, setEmail] = useState("");
 
-  const [isSignUp, setIsSignUp] = useState(true);
+ 
   //   console.log({ AuthContext });
   // console.log(useContext(AuthContext))
 
@@ -36,12 +36,13 @@ const Login = (props) => {
           const newUser = await response.json();
           console.log(newUser);
           // loginUser()
+          props.setIsSignUp(false)
         }
       } catch {}
     }
   };
 
-   if (isSignUp === false) {
+   if (props.isSignUp === false) {
     return (
       <div className="columns is-mobile">
         <form className="container column" onSubmit={loginUser}>
