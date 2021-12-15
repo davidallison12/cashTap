@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import BillsContainer from "./bill/BillsContainer";
 import Home from "./welcome/Home";
+import EditProfile from "./welcome/EditProfile";
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
 
@@ -73,6 +74,14 @@ function App() {
   };
 
 
+  // GETTING CURRENT USER
+
+
+
+
+
+
+
   useEffect(() => {
     if(user) {
       getBills();
@@ -101,7 +110,7 @@ function App() {
         {user  ? (
 
           <>
-            <h1>Welcome to the App!!! Desktop Version </h1>
+            {/* <h1>Welcome to the App!!! Desktop Version </h1>
             <button onClick={logoutUser}>Logout</button>
             <BillsContainer
               billsData={billsData}
@@ -111,7 +120,8 @@ function App() {
               deleteBill={deleteBill}
               handleUpdatedBills={handleUpdatedBills}
               user={user}
-            />
+            /> */}
+            <EditProfile />
           </>
         ) : (
           <Home />

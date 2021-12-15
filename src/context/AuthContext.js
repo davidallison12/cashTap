@@ -48,6 +48,7 @@ export const AuthProvider = ({children}) => {
         } else {
             console.log("Something went wrong! Response Err =>", response.status)
         }
+        console.log(user)
 
     }catch (err) {
         console.log("Err =>", err)
