@@ -17,7 +17,7 @@ export default AuthContext
 
 
 export const AuthProvider = ({children}) => {
-    const baseUrl = process.env.BACKEND || "http://localhost:8000"
+    const baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000"
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null) //parse is turning json into object -> Opposite of stringify
 
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
