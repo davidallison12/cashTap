@@ -17,6 +17,7 @@ export default AuthContext
 
 
 export const AuthProvider = ({children}) => {
+    const baseUrl = process.env.BACKEND || "http://localhost:8000"
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null) //parse is turning json into object -> Opposite of stringify
 
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
@@ -28,7 +29,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault()
         console.log("Login Submitted")
         try{
-        let response = await fetch('http://localhost:8000/api/token/', {
+        let response = await fetch(baseUrl + '/api/token/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -68,7 +69,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async () => {
         console.log('Update Token called')
-        let response = await fetch('http://localhost:8000/api/token/refresh/', {
+        let response = await fetch(baseUrl + '/api/token/refresh/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -96,7 +97,7 @@ export const AuthProvider = ({children}) => {
         console.log("Create User Route Hit!");
     if (password === confirmPassword) {
       try {
-        let response = await fetch("http://localhost:8000/api/users/", {
+        let response = await fetch(baseUrl + "/api/users/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

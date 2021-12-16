@@ -7,9 +7,9 @@ import Home from "./welcome/Home";
 import EditProfile from "./user/EditProfile";
 import Profile from "./user/Profile"
 
-let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
 
 function App() {
+  let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
   let { user, logoutUser, authTokens } = useContext(AuthContext);
   const [billsData, setBillsData] = useState([]);
   const [isDesktop, setIsDesktop] = useState(false);

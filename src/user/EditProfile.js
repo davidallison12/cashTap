@@ -19,7 +19,7 @@ function EditProfile(props) {
   //EDIT PROFILE
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:8000/api/profiles/" + profileData.id + "/";
+    const url = props.baseUrl + "/api/profiles/" + profileData.id + "/";
     console.log(e.target.textReminder.checked);
     console.log(user);
     try {
@@ -47,6 +47,7 @@ function EditProfile(props) {
         // Function in order ot pass copyBills to state.
         props.setEditProfileForm(false);
         props.handleUpdatedProfile(copyProfiles);
+        props.textConfirmEnrollment()
       } else {
         response.json().then((data) => {
           console.log(data);
