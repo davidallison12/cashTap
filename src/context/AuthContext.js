@@ -31,6 +31,7 @@ export const AuthProvider = ({children}) => {
         try{
         let response = await fetch(baseUrl + '/api/token/', {
             method: "POST",
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
             },
