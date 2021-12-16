@@ -3,7 +3,7 @@ import EditProfile from "./EditProfile";
 import AuthContext from "../context/AuthContext";
 
 function Profile() {
-  const baseUrl = process.env.BACKEND || "http://localhost:8000"
+  const baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000"
   const [profileData, setProfileData] = useState(null);
   const [editProfileForm, setEditProfileForm] = useState(false);
   const { user, authTokens } = useContext(AuthContext);
