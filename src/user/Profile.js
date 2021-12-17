@@ -4,7 +4,7 @@ import AuthContext from "../context/AuthContext";
 
 function Profile() {
   const baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000"
-  const twilioUrl = "http://localhost:3001"
+  // const twilioUrl = "http://localhost:3001"
   const [profileData, setProfileData] = useState({});
   const [editProfileForm, setEditProfileForm] = useState(false);
   const { user, authTokens } = useContext(AuthContext);
@@ -17,7 +17,7 @@ function Profile() {
   // })
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
-  const twilioUrl = process.env.TWILIOURL || "http:localhost:3001"
+  const twilioUrl = process.env.TWILIOURL || "http://localhost:3001"
 
   // GETTING PROFILE DATA
   const getProfile = async () => {
@@ -46,7 +46,7 @@ function Profile() {
 
   const textConfirmEnrollment = () => {
     setSubmitting(true)
-    fetch('/api/messages', {
+    fetch(twilioUrl + '/api/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

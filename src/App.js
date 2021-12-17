@@ -6,6 +6,8 @@ import BillsContainer from "./bill/BillsContainer";
 import Home from "./welcome/Home";
 import EditProfile from "./user/EditProfile";
 import Profile from "./user/Profile"
+import Nav from "./components/Nav";
+import Menu from "./components/Menu";
 
 
 function App() {
@@ -111,7 +113,13 @@ function App() {
         {user  ? (
 
           <>
-            {/* <h1>Welcome to the App!!! Desktop Version </h1>
+          <Nav />
+          <div className="columns">
+            <div className="column is-one-fifth">
+              <Menu />
+            </div>
+            <div className=" column is-four-fifths">
+            <h1>Welcome to the App!!! Desktop Version </h1>
             <button onClick={logoutUser}>Logout</button>
             <BillsContainer
               billsData={billsData}
@@ -121,7 +129,9 @@ function App() {
               deleteBill={deleteBill}
               handleUpdatedBills={handleUpdatedBills}
               user={user}
-            /> */}
+            />
+            </div>
+          </div>
             <Profile />
           </>
         ) : (
