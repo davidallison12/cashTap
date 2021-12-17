@@ -1,48 +1,24 @@
 {
   "name": "cashtap-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.15.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "bootstrap-icons": "^1.7.2",
-    "bulma": "^0.9.3",
-    "jwt-decode": "^3.1.2",
-    "react": "^17.0.2",
-    "react-burger-menu": "^3.0.6",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
+  "version": "1.0.0",
+  "description": "Bill_Saving_App",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "node-env-run server --exec nodemon | pino-colada",
-    "dev": "run-p server start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidallison12/cashTap-frontend.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "David Allison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidallison12/cashTap-frontend/issues"
   },
+  "homepage": "https://github.com/davidallison12/cashTap-frontend#readme",
   "devDependencies": {
-    "autoprefixer": "^9.8.8",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-pino-logger": "^7.0.0",
@@ -50,8 +26,9 @@
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "pino-colada": "^2.2.2",
-    "postcss": "^7.0.39",
     "twilio": "^3.72.0"
   },
-  "proxy": "http://localhost:3001"
+  "dependencies": {
+    "dotenv": "^8.6.0"
+  }
 }

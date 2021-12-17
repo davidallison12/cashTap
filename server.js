@@ -1,13 +1,14 @@
 const express = require('express');
+
 const bodyParser = require('body-parser'); 
 const pino = require('express-pino-logger')(); // express-pino-logger and pino-colada - for better server logging
 const app = express();
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
+const accountSid = "AC34841adf04c2bbe7b98bf7e5ddc08ec1";
+const authToken = "7e25b5146f6c49f773bc0abdac5321af";
 const twilioPhone = process.env.TWILIO_PHONE_NUMBER
 const client = require('twilio')(accountSid, authToken);
 
-
+require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(pino);
@@ -26,7 +27,7 @@ app.use(pino);
 //      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
 //      from: twilioPhone,
 //      to: '+12406017856'
-//    })
+//   
 //   .then(message => console.log(message.sid));
 
 app.post('/api/messages', (req, res) => {

@@ -4,7 +4,8 @@ import AuthContext from "../context/AuthContext";
 
 function Profile() {
   const baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000"
-  const [profileData, setProfileData] = useState(null);
+  const twilioUrl = "http://localhost:3001"
+  const [profileData, setProfileData] = useState({});
   const [editProfileForm, setEditProfileForm] = useState(false);
   const { user, authTokens } = useContext(AuthContext);
 
