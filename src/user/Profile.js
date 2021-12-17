@@ -88,12 +88,18 @@ function Profile() {
     );
   } else {
     return (
-      <>
-        <button onClick={() => setEditProfileForm(true)}>Edit Profile</button>
-
+      <div className="is-flex is-flex-direction-row is-justify-content-space-around">
+<div className="">
         <h1>WELCOME TO THE PROFILE PAGE</h1>
         <h2>HERE IS ALL OF YOUR INFO</h2>
-      </>
+        </div>
+        <div>
+        <div className="profile-avatar">
+        <i class="fas fa-user-circle"></i>
+        </div>
+        <button onClick={() => setEditProfileForm(true)}>Edit Profile</button>
+        </div>
+        </div>
     );
   }
 }

@@ -49,6 +49,9 @@
 .full-height-percentage{
   height: 100%;
 }
+.three-quarters-height-percentage {
+  height: 75%;
+}
 
 .menu-message-header {
   background-color: white;
@@ -57,4 +60,8 @@
 
 .bill-card-button-spacing {
   padding-right: 2vw;
+}
+
+.profile-avatar {
+ font-size: 15em;
 }
