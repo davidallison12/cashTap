@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.app-container {
+  height: 100%;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-height-percentage{
+  height: 100%;
+}
+
+.menu-message-header {
+  background-color: white;
+  color: black;
+}
+
+.bill-card-button-spacing {
+  padding-right: 2vw;
+}

@@ -13,13 +13,17 @@ function BillsContainer(props) {
   });
   return (
     <div className="block">
+      {props.isAddBill ?
+      <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills} user={props.user}/>:
+<>
       <h1 className="block">This is the Bills Container</h1>
       <div className="space-y-2 block">{ListBills}</div>
-      <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills} user={props.user}/>
       
       {editForm &&
 
       <EditBillForm baseUrl={props.baseUrl} setEditForm={setEditForm} billData={billForEdit} allBillsData={props.billsData} handleUpdatedBills={props.handleUpdatedBills}/>
+    }
+    </>
       }
     </div>
   );

@@ -116,14 +116,16 @@ function App() {
         {user  ? (
 
           <>
+          <div className="box">
           <Nav />
-          <div className="columns">
-            <div className="column is-one-fifth">
+          </div>
+          <div className="columns  app-container full-height">
+            <div className="column is-one-fifth box is-fullheight full-height">
               <Menu  setIsProfile={setIsProfile} isProfile={isProfile} setIsAddBill={setIsAddBill} isAddBill={isAddBill}/>
             </div>
 
 
-            <div className=" column is-four-fifths">
+            <div className=" column is-four-fifths is-fullheight box">
               {!isProfile ? 
               <>
             <h1>Welcome to the App!!! Desktop Version </h1>
@@ -139,7 +141,7 @@ function App() {
               setIsAddBill={setIsAddBill}
               isAddBill={isAddBill}
             />
-              </>:
+            </>:
               <Profile />
             }
             
