@@ -10,7 +10,8 @@ function BillCard (props) {
         props.setBillForEdit(bill)
     }
     return ( 
-        <div className='flex border-2 border-red-500 justify-between'>
+    <>
+        <div className='is-flex is-justify-content-space-between box'>
             <div className="mr-6"><i className="bi-credit-card border-2 border-red-500 text-5xl"></i></div>
             {/* This will be some logo to represent cc, tax, or other debt */}
             <div className="border-2 border-red-500">
@@ -30,6 +31,7 @@ function BillCard (props) {
 
             </div>
         </div>
+        </>
      );
 }
 

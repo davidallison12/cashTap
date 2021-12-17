@@ -10,12 +10,15 @@ import Nav from "./components/Nav";
 import Menu from "./components/Menu";
 
 
+
 function App() {
   let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:8000";
   let { user, logoutUser, authTokens } = useContext(AuthContext);
   const [billsData, setBillsData] = useState([]);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isUser, setIsUser] = useState(user)
+  const [isProfile, setIsProfile] = useState(false)
+  const [isAddBill, setIsAddBill] = useState(false)
   //  ========= BILLS CRUD FUNCTIONS =========
   // READ ==> GET
   const getBills = () => {
@@ -116,9 +119,13 @@ function App() {
           <Nav />
           <div className="columns">
             <div className="column is-one-fifth">
-              <Menu />
+              <Menu  setIsProfile={setIsProfile} isProfile={isProfile} setIsAddBill={setIsAddBill} isAddBill={isAddBill}/>
             </div>
+
+
             <div className=" column is-four-fifths">
+              {!isProfile ? 
+              <>
             <h1>Welcome to the App!!! Desktop Version </h1>
             <button onClick={logoutUser}>Logout</button>
             <BillsContainer
@@ -129,10 +136,16 @@ function App() {
               deleteBill={deleteBill}
               handleUpdatedBills={handleUpdatedBills}
               user={user}
+              setIsAddBill={setIsAddBill}
+              isAddBill={isAddBill}
             />
+              </>:
+              <Profile />
+            }
+            
             </div>
           </div>
-            <Profile />
+            
           </>
         ) : (
           <Home />

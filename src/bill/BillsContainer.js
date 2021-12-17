@@ -12,9 +12,9 @@ function BillsContainer(props) {
     return <BillCard key={bill.id} bill={bill} deleteBill={props.deleteBill}  setEditForm={setEditForm} editForm={editForm} setBillForEdit={setBillForEdit}/>;
   });
   return (
-    <div>
-      <h1>This is the Bills Container</h1>
-      <div className="space-y-2">{ListBills}</div>
+    <div className="block">
+      <h1 className="block">This is the Bills Container</h1>
+      <div className="space-y-2 block">{ListBills}</div>
       <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills} user={props.user}/>
       
       {editForm &&
