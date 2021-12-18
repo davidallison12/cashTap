@@ -13,7 +13,7 @@ function Menu(props) {
     General
   </p>
   <ul class="menu-list">
-    <li onClick={() => props.setIsAddBill(!props.isAddBill)}><a>Add A Bill</a></li>
+    <li onClick={() => props.goToAddToBill()}><a>Add A Bill</a></li>
     <li><a>Dashboard</a></li>
     <li><a>Customers</a></li>
   </ul>
@@ -21,7 +21,7 @@ function Menu(props) {
     Administration
   </p>
   <ul class="menu-list">
-    <li><a onClick={() =>props.setIsProfile(true)}> Manage Profile </a></li>
+    <li><a onClick={() =>props.goToProfile()}> Manage Profile </a></li>
   </ul>
 </aside>
 </div>

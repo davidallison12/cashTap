@@ -19,6 +19,7 @@ function App() {
   const [isUser, setIsUser] = useState(user)
   const [isProfile, setIsProfile] = useState(false)
   const [isAddBill, setIsAddBill] = useState(false)
+  const [currentUser, setCurrentUser] = useState("")
   //  ========= BILLS CRUD FUNCTIONS =========
   // READ ==> GET
   const getBills = () => {
@@ -81,16 +82,49 @@ function App() {
 
 
   // GETTING CURRENT USER
+const getCurrentUser = async () => {
+  const url = baseUrl + "/api/users/"
+  try{
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + String(authTokens.access)
+      }
+    })
+    let data = await response.json()
+    if (response.status === 200) {
+      
+      console.log(data)
+      setCurrentUser(data[0])
+      console.log(currentUser)
+
+    }
+  }catch (err) {
+    console.log("Error =>", err)
+  }
+}
 
 
 
 
+  // UI Manipulation
+  const goToAddToBill = () => {
+    setIsProfile(false)
+    setIsAddBill(true)
+  }
 
+  const goToProfile = () => {
+    setIsAddBill(false)
+    setIsProfile(true)
+  }
 
+  
 
   useEffect(() => {
     if(user) {
       getBills();
+      getCurrentUser()
     }
     // updateWindowDisplay();
   }, [user]);
@@ -108,7 +142,7 @@ function App() {
   //   window.addEventListener("resize", updateWindowDisplay);
   //   window.removeEventListener("resize", updateWindowDisplay);
   // }, [isDesktop])
-  console.log(user)
+  console.log(currentUser)
   return (
     <div className="">
      
@@ -117,19 +151,17 @@ function App() {
 
           <>
           <div className="box">
-          <Nav />
+          <Nav  logoutUser={logoutUser} setIsAddBill={setIsAddBill} isAddBill={isAddBill} setIsProfile={setIsProfile} isProfile={isProfile} goToAddToBill={goToAddToBill} goToProfile={goToProfile}/>
           </div>
           <div className="columns  app-container full-height">
             <div className="column is-one-fifth box is-fullheight full-height">
-              <Menu  setIsProfile={setIsProfile} isProfile={isProfile} setIsAddBill={setIsAddBill} isAddBill={isAddBill}/>
+              <Menu  setIsProfile={setIsProfile} isProfile={isProfile} setIsAddBill={setIsAddBill} isAddBill={isAddBill} goToAddToBill={goToAddToBill} goToProfile={goToProfile}/>
             </div>
 
 
             <div className=" column is-four-fifths is-fullheight box">
               {!isProfile ? 
               <>
-            <h1>Welcome to the App!!! Desktop Version </h1>
-            <button onClick={logoutUser}>Logout</button>
             <BillsContainer
               billsData={billsData}
               baseUrl={baseUrl}
@@ -140,9 +172,10 @@ function App() {
               user={user}
               setIsAddBill={setIsAddBill}
               isAddBill={isAddBill}
+              currentUser={currentUser}
             />
             </>:
-              <Profile />
+              <Profile currentUser={currentUser} />
             }
             
             </div>

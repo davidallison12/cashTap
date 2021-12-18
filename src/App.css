@@ -65,3 +65,16 @@
 .profile-avatar {
  font-size: 15em;
 }
+
+.profile-detail-full-height {
+  height: 98vh;
+  width: 70%
+}
+
+.profile-list-items {
+  line-height: 2.5;
+}
+
+.box-ninty-percent {
+  height:90%
+}

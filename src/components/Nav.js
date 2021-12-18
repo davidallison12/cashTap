@@ -1,8 +1,14 @@
+import { checkPropTypes } from 'prop-types';
 import React from 'react';
 
 
 
-function Nav() {
+function Nav(props) {
+  const setHome = () => {
+    props.setIsAddBill(false)
+    props.setIsProfile(false)
+  }
+  
     return ( 
         <>
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -20,12 +26,8 @@ function Nav() {
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" onClick={setHome}>
         Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -35,17 +37,14 @@ function Nav() {
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-            About
+            Add A Bill
           </a>
           <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
+            Profile
           </a>
           <hr class="navbar-divider"></hr>
           <a class="navbar-item">
-            Report an issue
+            Log Out
           </a>
         </div>
       </div>
@@ -54,12 +53,12 @@ function Nav() {
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
           <a class="button is-light">
-            Log in
+            <strong>Log out</strong>
           </a>
+          <div>
+          <i class="fas fa-user-circle is-size-2"></i>
+          </div>
         </div>
       </div>
     </div>
