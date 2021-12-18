@@ -16,10 +16,16 @@ function Welcome (props) {
        
       </div>
     </div>
-    <div className="is-flex is-flex-direction-row is-align-items-space-between is-grouped">
-      <h3 className="is-size-3 has-text-weight-bold has-text-white"onClick={() =>setIsSignUp(false)}>Login</h3>
+    <div className="is-flex is-justify-content-space-around is-grouped login-choice">
+      <div>
+    <a><h3 className="is-size-3 has-text-weight-bold has-text-white "onClick={() =>setIsSignUp(false)}>Login</h3></a>
+    </div>
+    <div>
       <h3 className="is-size-3 has-text-weight-bold has-text-white"> | </h3>
-      <h3 className="is-size-3 has-text-weight-bold has-text-white" onClick={() =>setIsSignUp(true)}> Sign Up</h3>
+      </div>
+      <div>
+      <a><h3 className="is-size-3 has-text-weight-bold has-text-white" onClick={() =>setIsSignUp(true)}> Sign Up</h3></a>
+      </div>
     </div>
 <div className="box is-5">
     <Login  isSignUp={isSignUp} setIsSignUp={setIsSignUp} baseUrl={props.baseUrl}/>
