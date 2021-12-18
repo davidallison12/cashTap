@@ -15,7 +15,6 @@ function Menu(props) {
   <ul class="menu-list">
     <li onClick={() => props.goToAddToBill()}><a>Add A Bill</a></li>
     <li><a>Dashboard</a></li>
-    <li><a>Customers</a></li>
   </ul>
   <p class="menu-label">
     Administration

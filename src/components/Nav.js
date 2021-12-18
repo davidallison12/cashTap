@@ -1,13 +1,16 @@
-import { checkPropTypes } from 'prop-types';
-import React from 'react';
+import React, {useContext} from 'react';
+import AuthContext from '../context/AuthContext';
 
 
 
 function Nav(props) {
+  let { user, logoutUser, authTokens } = useContext(AuthContext);
+
   const setHome = () => {
     props.setIsAddBill(false)
     props.setIsProfile(false)
   }
+  
   
     return ( 
         <>
@@ -53,7 +56,7 @@ function Nav(props) {
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        <div onClick={logoutUser}class="buttons">
           <a class="button is-light">
             <strong>Log out</strong>
           </a>
