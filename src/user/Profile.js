@@ -17,7 +17,7 @@ function Profile() {
   // })
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
-  const twilioUrl = process.env.TWILIOURL || "http://localhost:3001"
+  const twilioUrl = process.env.REACT_APP_TWILIO_URL || "http://localhost:3001"
 
   // GETTING PROFILE DATA
   const getProfile = async () => {
