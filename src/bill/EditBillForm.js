@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class EditBillForm extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +11,8 @@ class EditBillForm extends Component {
       min_payment: this.props.billData.min_payment,
     };
   }
+
+
 
   handleChange = (e) => {
     this.setState({
@@ -29,9 +32,12 @@ class EditBillForm extends Component {
           company_name: this.state.company_name,
           bill_due_date: this.state.bill_due_date,
           min_payment: this.state.min_payment,
+          id:this.props.billData.id
         }),
         headers: {
           "Content-Type": "application/json",
+        'Authorization' : 'Bearer ' + String(this.props.authTokens.access)
+
         },
       });
       if (response.status === 200) {

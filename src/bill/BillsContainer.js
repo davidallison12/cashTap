@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import BillCard from "./BillCard";
 import AddBillForm from './AddBillForm'
 import EditBillForm from "./EditBillForm";
-
+import AuthContext from "../context/AuthContext";
 function BillsContainer(props) {
+const {authTokens} = useContext(AuthContext)
     const [editForm, setEditForm] = useState(false)
     const [billForEdit, setBillForEdit] = useState(null)
   // console.log(props.billsData[0].bill_type)
@@ -33,7 +34,7 @@ function BillsContainer(props) {
       
       {editForm &&
 
-      <EditBillForm baseUrl={props.baseUrl} setEditForm={setEditForm} billData={billForEdit} allBillsData={props.billsData} handleUpdatedBills={props.handleUpdatedBills}/>
+      <EditBillForm baseUrl={props.baseUrl} setEditForm={setEditForm} billData={billForEdit} allBillsData={props.billsData} handleUpdatedBills={props.handleUpdatedBills} authTokens={authTokens}/>
     }
     </>
 }

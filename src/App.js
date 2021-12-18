@@ -52,13 +52,19 @@ function App() {
 
   // DELETING A BILL
   const deleteBill = async (id) => {
+    console.log(id)
     const url = baseUrl + "/api/bills/" + id + "/";
 
     try {
       const response = await fetch(url, {
         method: "DELETE",
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization' : 'Bearer ' + String(authTokens.access),
+        },
+        // credentials:"include"
       });
-      if (response.status === 204) {
+      if (response.status === 204) { 
         console.log(response);
         const findIndex = billsData.findIndex((bill) => bill.id === id);
         const copyBills = [...billsData];
