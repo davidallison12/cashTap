@@ -76,14 +76,14 @@ function Profile(props) {
 
       getProfile();
   
-  }, [user]);
+  }, [props.currentUser]);
 
  
   
   if (editProfileForm) {
     return (
       <>
-        <h1>This is the Edit Profile Form</h1>
+        <h1 className="is-size-2">Edit Profile & Settings</h1>
         <EditProfile
           profileData={profileData[0]}
           allProfileData={profileData}
@@ -91,6 +91,9 @@ function Profile(props) {
           handleUpdatedProfile={handleUpdatedProfile}
           textConfirmEnrollment={textConfirmEnrollment}
           baseUrl={baseUrl}
+          currentUser={props.currentUser}
+          allCurrentUsers={props.allCurrentUsers}
+          editUser={props.editUser}
         />
       </>
     );
@@ -99,14 +102,14 @@ function Profile(props) {
       <div className="is-flex is-flex-direction-row is-justify-content-space-around">
 <div className="box profile-detail-full-height">
   <div className="container">
-        <h1 className="is-size-2">{props.currentUser.first_name} {props.currentUser.last_name}'s Profile</h1>
+        <h1 className="is-size-2">{props.currentUser[0].first_name} {props.currentUser[0].last_name}'s Profile</h1>
         
         </div>
         <div className="box box-ninty-percent">
-          <h3><span className="has-text-weight-bold profile-list-items is-size-5">First Name:    </span>{props.currentUser.first_name}</h3>
-          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Last Name:    </span>{props.currentUser.last_name}</h3>
-          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Username:    </span>{props.currentUser.username}</h3>
-          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Email Address:    </span>{props.currentUser.email}</h3>
+          <h3><span className="has-text-weight-bold profile-list-items is-size-5">First Name:    </span>{props.currentUser[0].first_name}</h3>
+          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Last Name:    </span>{props.currentUser[0].last_name}</h3>
+          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Username:    </span>{props.currentUser[0].username}</h3>
+          <h3><span className="has-text-weight-bold profile-list-items is-size-5">Email Address:    </span>{props.currentUser[0].email}</h3>
           {
             Array.isArray(profileData) &&
             <>

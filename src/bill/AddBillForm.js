@@ -45,6 +45,7 @@ class AddBillForm extends Component {
           bill_due_date: "",
           min_payment: "",
         });
+        this.props.setIsAddBill(false)
       }
     } catch (err) {
       console.log("Error =>", err);
@@ -54,7 +55,7 @@ class AddBillForm extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="container">ADD A BILL</h1>
+        <h1 className="container is-size-3 has-font-weight-semibold">ADD A BILL</h1>
         <form onSubmit={this.handleSubmit}>
           {/* BILL TYPE */}
           <div class="field container">

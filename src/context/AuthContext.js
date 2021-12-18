@@ -31,7 +31,7 @@ export const AuthProvider = ({children}) => {
         try{
         let response = await fetch(baseUrl + '/api/token/', {
             method: "POST",
-            credentials: "include",
+            // credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -93,22 +93,23 @@ export const AuthProvider = ({children}) => {
 
     }
 
-    let registerUser = async (username, password, confirmPassword, first_name, last_name, email) => {
-        
+    let registerUser = async (e) => {
+        e.preventDefault()
         console.log("Create User Route Hit!");
-    if (password === confirmPassword) {
+    if (e.target.password.value === e.target.confirmPassword.value) {
       try {
         let response = await fetch(baseUrl + "/api/users/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+          "Accept": "application/json",
           },
           body: JSON.stringify({
-            username: username.toLowerCase(),
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password,
+            username: e.target.username.value.toLowerCase(),
+            first_name: e.target.firstName.value,
+            last_name: e.target.lastName.value,
+            email: e.target.email.value,
+            password: e.target.password.value,
           }),
         });
         if (response.status === 201) {

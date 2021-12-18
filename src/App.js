@@ -96,7 +96,7 @@ const getCurrentUser = async () => {
     if (response.status === 200) {
       
       console.log(data)
-      setCurrentUser(data[0])
+      setCurrentUser(data)
       console.log(currentUser)
 
     }
@@ -104,6 +104,12 @@ const getCurrentUser = async () => {
     console.log("Error =>", err)
   }
 }
+
+// UPDATE USER 
+
+// const editUser = (newUser) => {
+//   setCurrentUser(newUser)
+// }
 
 
 
@@ -133,6 +139,7 @@ const getCurrentUser = async () => {
   useEffect(() => {
     if(user) {
       getBills();
+
     }
 
   }, []);
@@ -159,7 +166,7 @@ const getCurrentUser = async () => {
             </div>
 
 
-            <div className=" column is-four-fifths is-fullheight box">
+            <div className=" column is-four-fifths full-height-percentage box">
               {!isProfile ? 
               <>
             <BillsContainer
@@ -172,7 +179,9 @@ const getCurrentUser = async () => {
               user={user}
               setIsAddBill={setIsAddBill}
               isAddBill={isAddBill}
-              currentUser={currentUser}
+              currentUser={currentUser[0]}
+              allCurrentUsers={currentUser}
+              getCurrentUser={getCurrentUser}
             />
             </>:
               <Profile currentUser={currentUser} />
@@ -183,7 +192,7 @@ const getCurrentUser = async () => {
             
           </>
         ) : (
-          <Home />
+          <Home baseUrl={baseUrl}/>
         )}
       </>
     </div>
@@ -192,124 +201,3 @@ const getCurrentUser = async () => {
 
 export default App;
 
-// class App extends Component {
-//   static contextType = AuthContext
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       billsData: [],
-//       isDesktop: false,
-//     };
-//   }
-
-//   // ========= BILLS CRUD FUNCTIONS =========
-//   // READ ==> GET
-//   getBills = () => {
-//     fetch(baseUrl + "/api/bills/")
-//       .then((res) => {
-//         if (res.status === 200) {
-//           return res.json();
-//         } else {
-//           return [];
-//         }
-//       })
-//       .then((data) => {
-//         console.log(data);
-//         this.setState({
-//           billsData: data,
-//         });
-//       });
-//   };
-
-//   // ADDING A BILL
-//   addBill = (newBill) => {
-//     const copyBills = [...this.state.billsData];
-//     copyBills.push(newBill);
-//     this.setState({
-//       billsData: copyBills,
-//     });
-//   };
-
-//   // DELETING A BILL
-//   deleteBill = async (id) => {
-//     const url = baseUrl + "/api/bills/" + id + "/"
-
-//     try{
-//       const response = await fetch(url, {
-//         method: "DELETE"
-//       })
-//       if(response.status === 204) {
-//         console.log(response)
-//         const findIndex = this.state.billsData.findIndex((bill) => bill.id === id)
-//         const copyBills = [...this.state.billsData]
-//         copyBills.splice(findIndex, 1)
-//         this.setState({
-//           billsData: copyBills
-//         })
-//       }
-
-//     }
-//     catch(err) {
-//       console.log("Error =>", err)
-//     }
-//   }
-
-//   //UPDATING BILL
-//   handleUpdatedBills = (updatedBills) => {
-//     console.log(updatedBills)
-//     this.setState({
-//       billsData: updatedBills
-//     })
-//   }
-
-//   updateWindowDisplay = () => {
-//     this.setState({
-//       isDesktop: window.innerWidth > 1000,
-//     });
-//   };
-
-//   componentDidMount() {
-//     const user = this.context.client
-//     this.getBills();
-//     this.updateWindowDisplay();
-//     window.addEventListener("resize", this.updateWindowDisplay);
-//   }
-
-//   componentWillUnmount() {
-//     window.removeEventListener("resize", this.updateWindowDisplay);
-//   }
-
-//   render() {
-
-//     return (
-//       <div className="">
-//         {this.state.isDesktop ? (
-//           <>
-//         <AuthProvider>
-//           {user ?
-//           <>
-//           <h1>Welcome to the App!!! Desktop Version </h1>
-//           <button>Logout</button>
-//           <BillsContainer
-//             billsData={this.state.billsData}
-//             baseUrl={baseUrl}
-//             addBill={this.addBill}
-//             getBills={this.getBills}
-//             deleteBill={this.deleteBill}
-//             handleUpdatedBills={this.handleUpdatedBills}
-//           />
-//           </>
-//         :
-//         <Home />
-//         }
-//         </AuthProvider>
-//           </>
-//         ) : (
-//           <h1>Welcome to the App!!! Tablet/Mobile Version</h1>
-//         )}
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;

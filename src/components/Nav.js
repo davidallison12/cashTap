@@ -14,7 +14,8 @@ function Nav(props) {
         <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+      {/* <img className="image is-128x128" src="https://previews.123rf.com/images/putracetol/putracetol1808/putracetol180801371/106766113-abacus-school-and-education-logo-icon-design.jpg"/> */}
+      <h1 className="has-text-weight-bold is-size-2 is-family-monospace">CashTAP</h1>
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 
+
 const Login = (props) => {
-  let { loginUser } = useContext(AuthContext); //https://stackoverflow.com/questions/25187903/what-do-curly-braces-around-javascript-variable-name-mean
+  let { loginUser, registerUser } = useContext(AuthContext); //https://stackoverflow.com/questions/25187903/what-do-curly-braces-around-javascript-variable-name-mean
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,10 +20,11 @@ const Login = (props) => {
     console.log("Create User Route Hit!");
     if (password === confirmPassword) {
       try {
-        let response = await fetch("http://localhost:8000/api/users/", {
+        let response = await fetch(props.baseUrl + "/api/users/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json",
           },
           body: JSON.stringify({
             username: username.toLowerCase(),
@@ -44,7 +46,7 @@ const Login = (props) => {
 
    if (props.isSignUp === false) {
     return (
-      <div className="columns is-mobile">
+      <div className="columns is-mobile login-popup">
         <form className="container column" onSubmit={loginUser}>
           <div className="field">
             <label htmlFor="username" className="label">
@@ -52,7 +54,7 @@ const Login = (props) => {
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-success"
+                className="input"
                 type="text"
                 name="username"
                 placeholder="Text input"
@@ -62,12 +64,9 @@ const Login = (props) => {
               <span className="icon is-small is-left">
                 <i className="fas fa-user"></i>
               </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
             </div>
 
-            <p className="help is-success">This username is available</p>
+           
           </div>
 
           <div className="field">
@@ -76,22 +75,14 @@ const Login = (props) => {
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-danger"
+                className="input"
                 name="password"
                 type="password"
                 placeholder="Email input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span className="icon is-small is-left">
-                <i className="fas fa-envelope"></i>
-              </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-exclamation-triangle"></i>
-              </span>
             </div>
-
-            <p className="help is-danger">This email is invalid</p>
           </div>
 
           <div className="field is-grouped">
@@ -104,8 +95,10 @@ const Login = (props) => {
     );
   } else {
     return (
-      <div className="columns is-mobile">
-        <h1>This is the Sign Up Page</h1>
+      <div className="columns is-mobile login-popup sign-up">
+        <div>
+        
+        </div>
         <form className="container column" onSubmit={createUser}>
           
           
@@ -116,7 +109,7 @@ const Login = (props) => {
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-success"
+                className="input"
                 type="text"
                 name="username"
                 placeholder="Text input"
@@ -126,24 +119,21 @@ const Login = (props) => {
               <span className="icon is-small is-left">
                 <i className="fas fa-user"></i>
               </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
             </div>
 
-            <p className="help is-success">This username is available</p>
+           
           </div>
-
+<div>
           {/* FIRST NAME  */}
           <div className="field">
-            <label htmlFor="first_name" className="label">
+            <label htmlFor="firstName" className="label">
               First Name:
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-success"
+                className="input"
                 type="text"
-                name="first_name"
+                name="firstName"
                 placeholder="Text input"
                 value={first_name}
                 onChange={(e) => set_first_name(e.target.value)}
@@ -151,24 +141,21 @@ const Login = (props) => {
               <span className="icon is-small is-left">
                 <i className="fas fa-user"></i>
               </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
             </div>
 
-            <p className="help is-success">This username is available</p>
+           
           </div>
-
+</div>
           {/* LAST NAME */}
           <div className="field">
-            <label htmlFor="last_name" className="label">
+            <label htmlFor="lastName" className="label">
               Last Name:
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-success"
+                className="input"
                 type="text"
-                name="last_name"
+                name="lastName"
                 placeholder="Text input"
                 value={last_name}
                 onChange={(e) => set_last_name(e.target.value)}
@@ -176,12 +163,9 @@ const Login = (props) => {
               <span className="icon is-small is-left">
                 <i className="fas fa-user"></i>
               </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
             </div>
 
-            <p className="help is-success">This username is available</p>
+           
           </div>
 
           {/* EMAIL ADDRESS */}
@@ -191,7 +175,7 @@ const Login = (props) => {
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-success"
+                className="input"
                 type="text"
                 name="email"
                 placeholder="Text input"
@@ -201,12 +185,9 @@ const Login = (props) => {
               <span className="icon is-small is-left">
                 <i className="fas fa-user"></i>
               </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
             </div>
 
-            <p className="help is-success">This username is available</p>
+            
           </div>
 
           {/* PASSWORD */}
@@ -216,19 +197,13 @@ const Login = (props) => {
             </label>
             <div className="control has-icons-left has-icons-right">
               <input
-                className="input is-danger"
+                className="input"
                 name="password"
                 type="password"
                 placeholder="Email input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <span className="icon is-small is-left">
-                <i className="fas fa-envelope"></i>
-              </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-exclamation-triangle"></i>
-              </span>
             </div>
 
             {/*Confirm Password */}
@@ -238,21 +213,14 @@ const Login = (props) => {
               </label>
               <div className="control has-icons-left has-icons-right">
                 <input
-                  className="input is-danger"
+                name="confirmPassword"
+                  className="input"
                   type="password"
                   placeholder="Email input"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-exclamation-triangle"></i>
-                </span>
               </div>
-
-              <p className="help is-danger">This email is invalid</p>
             </div>
 
             <div className="field is-grouped">

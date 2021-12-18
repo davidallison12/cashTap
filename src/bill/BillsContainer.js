@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BillCard from "./BillCard";
 import AddBillForm from './AddBillForm'
 import EditBillForm from "./EditBillForm";
@@ -14,14 +14,21 @@ function BillsContainer(props) {
   // const listUsers = props.currentUser.map(user, i) => {
   //   return <h1>user.firs</h1>
   // })
+
+  // useEffect(() => {
+  //   props.getCurrentUser()
+  // })
   return (
+    
     <div className="block">
       {props.isAddBill ?
       <AddBillForm  baseUrl={props.baseUrl} addBill={props.addBill} getBills={props.getBills} user={props.user} setIsAddBill={props.setIsAddBill} isAddBill={props.isAddBill}/>:
-<>
+      <>
+      {Array.isArray(props.currentUser) &&
 <div className="box is-info">
       <h1 className="is-size-2 has-text-weight-semibold">{props.currentUser.first_name}'s Bills </h1>
       </div>
+    }
       <div className="space-y-2 block">{ListBills}</div>
       
       {editForm &&
@@ -29,9 +36,11 @@ function BillsContainer(props) {
       <EditBillForm baseUrl={props.baseUrl} setEditForm={setEditForm} billData={billForEdit} allBillsData={props.billsData} handleUpdatedBills={props.handleUpdatedBills}/>
     }
     </>
-      }
-    </div>
-  );
 }
+    </div>
+    
+    );
+  }
+
 
 export default BillsContainer;

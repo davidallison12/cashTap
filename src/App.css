@@ -78,3 +78,21 @@
 .box-ninty-percent {
   height:90%
 }
+
+.back-ground-image-money {
+  background-image: url("https://images.unsplash.com/photo-1597636509409-52abe462d08c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: 240vh;
+  background-repeat:no-repeat; 
+ 
+}
+.login-popup {
+  width: 30vw;
+  height:40vh;
+  
+}
+
+.sign-up {
+  width:50vw;
+  height:80vh;
+}
+
