@@ -47,7 +47,7 @@ function Nav(props) {
             Profile
           </a>
           <hr class="navbar-divider"></hr>
-          <a class="navbar-item">
+          <a class="navbar-item" onClick={logoutUser}>
             Log Out
           </a>
         </div>
