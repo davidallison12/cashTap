@@ -1,11 +1,13 @@
 ## cashTap Frontend 
 
-**Associated Repos**
+### Associated Repos
+
 Backend: https://github.com/davidallison12/cashTap-backend
 
 Twilio Backend: https://github.com/davidallison12/cashTap-twilio
 
-**Deployed Links:**
+### Deployed Links:
+
 Main Site: https://cashtap-frontend.herokuapp.com/
 
 Backend:https://cashtap-backend.herokuapp.com/
